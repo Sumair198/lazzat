@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-// import axios from 'axios'
+import axios from 'axios'
 
 
 
@@ -45,14 +45,25 @@ export default function Dashboard() {
             }),
             onSubmit: async(values) => {
                 console.log(values)
-                // try {
-                //     return await axios.post(`http://localhost:4000/upload`, values)
-                // }
-                // catch (err) {
-                //     console.log('Error while calling api admin post', err)
-                // }
-                
 
+                const dataf = new FormData();
+
+                dataf.append('name',values.name)
+                dataf.append('description',values.description)
+                dataf.append('image',values.image)
+                dataf.append('price',values.price)
+                dataf.append('status',values.status)
+                dataf.append('is_featured',values.is_featured)
+                dataf.append('category',values.category)
+
+
+                try {
+                    return await axios.post(`http://localhost:4000/upload`, dataf)
+                }
+                catch (err) {
+                    console.log('Error while calling api menu post', err)
+                }
+                 
             }
         }
     )
@@ -76,8 +87,8 @@ export default function Dashboard() {
 
                 {/* <TextField type='file' name='image' id='image' onChange={formik.handleChange} value={formik.values.image} label="image" variant="standard" /> */}
                 <Button variant="contained" component="label">
-                    Image Upload
-                    <input hidden accept="image/*" multiple type="file" name='image' id='image' onChange={formik.handleChange} value={formik.values.image} label="image" />
+                    <input   type="file" name='image' accept="image/*" id='image' onChange={(e)=> 
+                        formik.setFieldValue('image', e.target.files[0])}  label="image" />
                 </Button>
                 {formik.errors.image && formik.touched.image ? (<p>{formik.errors.image}</p>) : null}
                 <br /><br />

@@ -7,14 +7,15 @@ import bcrypt from "bcrypt"
 //Create Menu Start
 const createMenu = async (req, res) => {
 
-    const checked = req.file.filename
-    const path2 = checked.replace(/\\/g, "/")
+    console.log(req.file.filename)
+    // const checked = req.file.filename
+    // const path2 = checked.replace(/\\/g, "/")
 
     const menuDocument = new MenuModel(
         {
             name: req.body.name,
             description: req.body.description,
-            image: path2,
+            image: req.file.filename,
             price: req.body.price,
             status: req.body.status,
             is_featured: req.body.is_featured,
@@ -222,8 +223,8 @@ const loginUser = async (req, res) => {
         const useremail = await RegisterUserModel.findOne({ email: email })
         const isMatch = await bcrypt.compare(password, useremail.password)
 
-        const token = await useremail.generateAuthToken()
-        console.log('Return ' + token )
+        // const token = await useremail.generateAuthToken()
+        // console.log('Return ' + token )
 
         if (isMatch) {
             

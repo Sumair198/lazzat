@@ -241,6 +241,44 @@ const loginUser = async (req, res) => {
     }
 }
 
-export { createMenu, Menu, getHomeMenu, speciality, maincourse, yummydesserts, chinese, Booking, specialityMenu, maincourseMenu, yummydessertsMenu, chineseMenu, registerUser,loginUser };
+//Delete Manu
+const deleteMenu = async (req,res) =>
+{
+    const result = await MenuModel.findByIdAndDelete(req.params.id)
+    console.log(result)
+    res.send(result)
+}  
+//Edit
+const getSingleMenu = async (req,res)=>
+{
+    try {
+        const result = await MenuModel.find({_id: req.params.id})
+        res.send(result)
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
 
-//work
+
+//get Booking
+const getBooking = async (req,res)=>
+{
+    try {
+        const result = await bookingModel.find()
+        res.send(result)
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
+//Delete Booking
+const deletebooking = async (req,res) =>
+{
+    const result = await bookingModel.findByIdAndDelete(req.params.id)
+    console.log(result)
+    res.send(result)
+} 
+
+
+export { createMenu, Menu, getHomeMenu, speciality, maincourse, yummydesserts, chinese, Booking, specialityMenu, maincourseMenu, yummydessertsMenu, chineseMenu, registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking };

@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router()
 
-import {createMenu ,Menu, getHomeMenu,speciality,maincourse, yummydesserts,chinese,Booking,specialityMenu,maincourseMenu,yummydessertsMenu,chineseMenu,registerUser,loginUser} from "../Controller/Controller.js";
+import {createMenu ,Menu, getHomeMenu,speciality,maincourse, yummydesserts,chinese,Booking,specialityMenu,maincourseMenu,yummydessertsMenu,chineseMenu,registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking} from "../Controller/Controller.js";
 import multer from "multer";
 
 
@@ -54,7 +54,18 @@ router.post('/register',registerUser)
 
 //Login User
 router.post('/login',loginUser)
-//work
 
+
+//Delete Menu
+router.delete('/delete/:id', deleteMenu)
+
+//Edit 
+router.get('/editmenu/:id',getSingleMenu)
+
+//get booking data
+router.get('/booking' , getBooking)
+
+//Delete Booking
+router.delete('/delbooking/:id', deletebooking)
 
 export default router;

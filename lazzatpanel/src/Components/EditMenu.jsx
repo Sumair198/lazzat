@@ -117,6 +117,7 @@ export default function EditMenu() {
     // console.log(edit.name)
     return (
         <>
+         
             <nav class="navbar navbar-expand-lg navbar-light  bg-dark ">
                 <div class="container-fluid ">
                     <a class="navbar-brand" href="#"> <img src="lz-logo.png" alt="Logo" style={{ width: '120px' }} /></a>

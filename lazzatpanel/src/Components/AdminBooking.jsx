@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Table, TableBody, TableCell, TableHead, TableRow, styled } from "@mui/material"
 import axios from "axios";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { Link } from "react-router-dom";
 
 const StyledTable = styled(Table)
     `
@@ -18,8 +19,6 @@ const Thead = styled(TableRow)`
     }
 
 `
-
-
 
 export default function AdminBooking() {
 
@@ -56,10 +55,6 @@ export default function AdminBooking() {
     }
 
    
-    const edtbtn = () => {
-        console.log('Edited!!!!')
-
-    }
     return (
         <>
             <nav class="navbar navbar-expand-lg navbar-light  bg-dark ">
@@ -86,7 +81,7 @@ export default function AdminBooking() {
                     </div>
                 </div>
             </nav>
-            <h1>BOOKINGS</h1>
+            <h2>BOOKINGS</h2>
             <StyledTable>
                 <TableHead >
                     <Thead>
@@ -110,7 +105,7 @@ export default function AdminBooking() {
                                 <TableCell>{adminBooking.noOfPerson}</TableCell>
                                 <TableCell>{adminBooking.yourRequest}</TableCell>
                                 <TableCell>
-                                    <Button onClick={() => edtbtn()}>
+                                <Button component={Link} to={`/editbooking/${adminBooking._id}`}>
                                         <i class="bi bi-pencil-square"></i>
                                     </Button>
                                     <Button onClick={() => delebtn(adminBooking._id)}>

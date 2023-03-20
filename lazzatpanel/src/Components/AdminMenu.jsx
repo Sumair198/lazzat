@@ -53,10 +53,10 @@ export default function AdminMenu() {
 
     }
     //Edit Menu
-    const edtbtn = () => {
-        console.log('edited!!')
+    // const edtbtn = () => {
+    //     console.log('edited!!')
 
-    }
+    // }
 
     return ( 
         <>

@@ -10,6 +10,7 @@ import AddMenu from './Components/AddMenu';
 import AdminMenu from './Components/AdminMenu';
 import EditMenu from './Components/EditMenu';
 import AdminBooking from './Components/AdminBooking';
+import EditBooking from './Components/EditBooking';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path='/adminmenu' element={<AdminMenu/>} />
           <Route path='/editmenu/:id' element={<EditMenu />} />
           <Route path='/booking' element={<AdminBooking/>} />
+          <Route path='/editbooking/:id' element={<EditBooking/>} />
 
         </Routes>
       </BrowserRouter>

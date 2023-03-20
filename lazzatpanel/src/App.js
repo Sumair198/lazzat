@@ -11,6 +11,8 @@ import AdminMenu from './Components/AdminMenu';
 import EditMenu from './Components/EditMenu';
 import AdminBooking from './Components/AdminBooking';
 import EditBooking from './Components/EditBooking';
+import Testimonail from './Components/Testimonial';
+import AddTestimonials from './Components/AddTestimonials';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path='/editmenu/:id' element={<EditMenu />} />
           <Route path='/booking' element={<AdminBooking/>} />
           <Route path='/editbooking/:id' element={<EditBooking/>} />
+          <Route path='/testimonials' element={<Testimonail />} />
+          <Route path='/addtestimonial' element={<AddTestimonials />} />
 
         </Routes>
       </BrowserRouter>

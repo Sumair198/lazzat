@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router()
 
-import {createMenu ,Menu, getHomeMenu,speciality,maincourse, yummydesserts,chinese,Booking,specialityMenu,maincourseMenu,yummydessertsMenu,chineseMenu,registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking} from "../Controller/Controller.js";
+import {createMenu ,Menu, getHomeMenu,speciality,maincourse, yummydesserts,chinese,Booking,specialityMenu,maincourseMenu,yummydessertsMenu,chineseMenu,registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking,createTestimonials} from "../Controller/Controller.js";
 import multer from "multer";
 
 
@@ -21,6 +21,28 @@ const upload = multer({
  
 //post api with image upload
 router.post('/upload' , upload, createMenu )
+
+
+
+//testimonials start
+const uploadTest = multer({
+    storage: multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, '/Users/HP/Desktop/lazzat/Back-end/uploads/Testimonial-uploads')
+        }
+        , filename: function (req, file, cb) {
+            cb(null, file.fieldname + "-" + Date.now() + ".jpg")
+        }
+
+    })
+}).single('photoTestimonial')
+
+router.post('/testing' ,uploadTest, createTestimonials )
+//testimonials end
+
+
+
+
 
 
 //Get all Menu 

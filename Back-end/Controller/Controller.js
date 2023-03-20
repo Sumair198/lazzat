@@ -1,6 +1,7 @@
 import MenuModel from "../Schema-Model/Menu-Schema.js"
 import bookingModel from "../Schema-Model/Booking-Schema.js"
 import RegisterUserModel from "../Schema-Model/Register.js"
+import TestimonialModel from "../Schema-Model/Testimonials-Schema.js";
 import nodemailer from 'nodemailer';
 import bcrypt from "bcrypt"
 
@@ -28,6 +29,28 @@ const createMenu = async (req, res) => {
     res.send(result)
 }
 //Create Menu End
+
+
+
+//Testimonails start
+const createTestimonials = async(req,res)=>
+{
+     const checked = req.file.filename
+    const path2 = checked.replace(/\\/g, "/")
+    const testimonailsDoc = new TestimonialModel(
+        {
+            clientText : req.body.clientText,
+            clientName : req.body.clientName,
+            Profession: req.body.Profession,
+            photoTestimonial: path2
+        }
+    )
+    const result = await testimonailsDoc.save()
+    console.log(result)
+    res.send(result)
+}
+//Testimonails End
+
 
 
 //Get all Menu Start , is_featured : false , All Menu
@@ -281,4 +304,4 @@ const deletebooking = async (req,res) =>
 } 
 
 
-export { createMenu, Menu, getHomeMenu, speciality, maincourse, yummydesserts, chinese, Booking, specialityMenu, maincourseMenu, yummydessertsMenu, chineseMenu, registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking };
+export { createMenu, Menu, getHomeMenu, speciality, maincourse, yummydesserts, chinese, Booking, specialityMenu, maincourseMenu, yummydessertsMenu, chineseMenu, registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking,createTestimonials };

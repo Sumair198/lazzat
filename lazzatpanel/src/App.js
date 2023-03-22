@@ -14,6 +14,8 @@ import EditBooking from './Components/EditBooking';
 import Testimonail from './Components/Testimonial';
 import AddTestimonials from './Components/AddTestimonials';
 import EditTestimonials from './Components/EditTestimonials';
+import OurTeam from './Components/OurTeam';
+import AddOurTeam from './Components/AddOurTeam';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
           <Route path='/testimonials' element={<Testimonail />} />
           <Route path='/addtestimonial' element={<AddTestimonials />} />
           <Route path='/edittestimonial/:id' element={<EditTestimonials />} />
+          <Route path='/ourteam' element={<OurTeam />} />
+          <Route path='/addourteam' element={<AddOurTeam />} />
 
         </Routes>
       </BrowserRouter>

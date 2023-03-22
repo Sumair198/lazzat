@@ -82,6 +82,9 @@ export default function Testimonail() {
                             <li class="nav-item">
                                 <a class="nav-link active text-light" aria-current="page" href="/booking">BOOKINGS</a>
                             </li>
+                            <li class="nav-item">
+                            <a class="nav-link active text-light" aria-current="page" href="/ourteam">OUR TEAM</a>
+                            </li>
                         </ul>
                         <Button class="btn btn-outline-info" type="submit" component={Link} to={`/addtestimonial`}>+Add Testimonial</Button>
                     </div>

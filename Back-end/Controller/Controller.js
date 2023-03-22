@@ -4,6 +4,7 @@ import RegisterUserModel from "../Schema-Model/Register.js"
 import TestimonialModel from "../Schema-Model/Testimonials-Schema.js";
 import nodemailer from 'nodemailer';
 import bcrypt from "bcrypt"
+import OurTeamModel from "../Schema-Model/OurTeam-Schema.js";
 
 //Create Menu Start
 const createMenu = async (req, res) => {
@@ -50,6 +51,27 @@ const createTestimonials = async(req,res)=>
     res.send(result)
 }
 //Testimonails End
+
+//Our Team start
+const createOurTeam = async(req,res)=>
+{
+    const checked = req.file.filename
+    const path2 = checked.replace(/\\/g, "/")
+    const ourTeamDoc = new OurTeamModel(
+        {
+            teamImage:path2,
+            teamName : req.body.teamName,
+            teamTitle : req.body.teamTitle,
+            teamFacebook: req.body.teamFacebook,
+            teamInsta: req.body.teamInsta,
+            teamWhatsapp: req.body.teamWhatsapp
+        }
+    )
+    const result = await ourTeamDoc.save()
+    console.log(result)
+    res.send(result)
+}
+//Our Team end
 
 
 
@@ -318,4 +340,4 @@ const deleteTestimonial = async (req,res) =>
     res.send(result)
 } 
 
-export { createMenu, Menu, getHomeMenu, speciality, maincourse, yummydesserts, chinese, Booking, specialityMenu, maincourseMenu, yummydessertsMenu, chineseMenu, registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking,createTestimonials,getTestimonials,deleteTestimonial };
+export { createMenu, Menu, getHomeMenu, speciality, maincourse, yummydesserts, chinese, Booking, specialityMenu, maincourseMenu, yummydessertsMenu, chineseMenu, registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking,createTestimonials,getTestimonials,deleteTestimonial,createOurTeam };

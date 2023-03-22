@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router()
 
-import {createMenu ,Menu, getHomeMenu,speciality,maincourse, yummydesserts,chinese,Booking,specialityMenu,maincourseMenu,yummydessertsMenu,chineseMenu,registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking,createTestimonials,getTestimonials,deleteTestimonial} from "../Controller/Controller.js";
+import {createMenu ,Menu, getHomeMenu,speciality,maincourse, yummydesserts,chinese,Booking,specialityMenu,maincourseMenu,yummydessertsMenu,chineseMenu,registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking,createTestimonials,getTestimonials,deleteTestimonial, createOurTeam} from "../Controller/Controller.js";
 import multer from "multer";
 
 
@@ -41,8 +41,22 @@ router.post('/testing' ,uploadTest, createTestimonials )
 //testimonials end
 
 
+//create Our Team start
 
+const uploadTeam = multer({
+    storage: multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, '/Users/HP/Desktop/lazzat/lazzat/public/uploads/OurTeam')
+        }
+        , filename: function (req, file, cb) {
+            cb(null, file.fieldname + "-" + Date.now() + ".jpg")
+        }
 
+    })
+}).single('teamImage')
+
+router.post('/createourteam',uploadTeam, createOurTeam)
+//create Our Team End
 
 
 //Get all Menu 
@@ -95,5 +109,8 @@ router.get('/gettestimonials' , getTestimonials)
 
 //delete testimonial
 router.delete('/deltestimonial/:id', deleteTestimonial)
+
+
+
 
 export default router;

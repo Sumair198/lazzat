@@ -77,6 +77,9 @@ export default function AdminBooking() {
                             <li class="nav-item">
                                 <a class="nav-link active text-light" aria-current="page" href="/testimonials">TESTIMONIALS</a>
                             </li>
+                            <li class="nav-item">
+                            <a class="nav-link active text-light" aria-current="page" href="/ourteam">OUR TEAM</a>
+                            </li>
                         </ul>
 
                         <button class="btn btn-outline-info" type="submit">+Add Menu</button>

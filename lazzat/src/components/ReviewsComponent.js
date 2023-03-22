@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import { testimonialsData } from '../service/api';
 
 export default function ReviewsComponent() {
+    const [testi , setTesti] = useState([])
+
+    useEffect(()=>
+    {
+        getTestiData()
+    },[])
+
+    const getTestiData = async () =>
+    {
+        const responseData = await testimonialsData()
+        setTesti(responseData.data)
+    }
 
     const options = {
         margin: 30,
@@ -41,29 +54,27 @@ export default function ReviewsComponent() {
                     <h1 className="mb-5">Our Clients Say!!!</h1>
                 </div>
                 <OwlCarousel className='owl-theme' loop margin={10} {...options} nav>
-                    <div className="item testimonial-item bg-transparent border rounded p-4">
-                        <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p style={{ height: '192px' }}>Highly recommended 👍🏻👍🏻 and a must-try. "The best home food service in town"🥰🥰. I ordered Customized food including Reshmi Kabab and Shahi Tukray and they delivered a complimentary mouth-watering delicious biryani and made my day. </p>
-                        <div className="d-flex align-items-center">
-                            <img className="img-fluid flex-shrink-0 rounded-circle" alt="" src="https://scontent.fkhi16-1.fna.fbcdn.net/v/t39.30808-1/272030777_6690866347654866_115370310569878926_n.jpg?stp=c0.12.40.40a_cp0_dst-jpg_p40x40&_nc_cat=106&ccb=1-7&_nc_sid=7206a8&_nc_ohc=eFjRXSq7uxoAX8DwbB9&_nc_ht=scontent.fkhi16-1.fna&oh=00_AfBb4p6H6oR1nnWtuQUXRndshWDWxGYi8366XOExtrDq_w&oe=63C22009" style={{ width: '50px', height: '50px' }} />
-                            <div className="ps-3">
-                                <h5 className="mb-1">Asad Ali</h5>
-                                <small>Software Engineer</small>
+
+
+                    {
+                            testi.map(getTesti =>(
+                                <div className="testimonial-item bg-transparent border rounded p-4">
+                                <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                                <p style={{ height: '192px' }}>{getTesti.clientText}</p>
+                                <div className="d-flex align-items-center">
+                                    <img className="img-fluid flex-shrink-0 rounded-circle" alt="" src={`uploads/Testimonial-uploads/${getTesti.photoTestimonial}`} style={{ width: '50px', height: '50px' }} />
+                                    <div className="ps-3">
+                                        <h5 className="mb-1">{getTesti.clientName}</h5>
+                                        <small>{getTesti.Profession}</small>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="testimonial-item bg-transparent border rounded p-4">
-                        <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p style={{ height: '192px' }}>Highly recommended 👍👍. I found her while searching for home made food services in karachi. I wanted to send iftari gifts for my loved ones there. I must say it was a great experience with them.</p>
-                        <div className="d-flex align-items-center">
-                            <img className="img-fluid flex-shrink-0 rounded-circle" alt="" src="https://scontent.fkhi16-1.fna.fbcdn.net/v/t1.6435-1/70423727_2757339140942773_8417392200802893824_n.jpg?stp=cp0_dst-jpg_p40x40&_nc_cat=111&ccb=1-7&_nc_sid=7206a8&_nc_ohc=1OakDlKlI9sAX_ndstw&_nc_ht=scontent.fkhi16-1.fna&oh=00_AfBUf3J3cvq3ZC_A3CsMVg3EoeG0X8AOwXhMzi1TWuTpTA&oe=63E46426" style={{ width: '50px', height: '50px' }} />
-                            <div className="ps-3">
-                                <h5 className="mb-1">Fahmida Panhwar</h5>
-                                <small>Doctor</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="testimonial-item bg-transparent border rounded p-4">
+                            ))
+                    }
+                   
+
+                   
+                    {/* <div className="testimonial-item bg-transparent border rounded p-4">
                         <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
                         <p style={{ height: '192px' }}>highly recommended,  must try, Great value, Creative cuisine, Professional staff</p>
                         <div className="d-flex align-items-center">
@@ -73,8 +84,8 @@ export default function ReviewsComponent() {
                                 <small>Professional</small>
                             </div>
                         </div>
-                    </div>
-                    <div className="testimonial-item bg-transparent border rounded p-4">
+                    </div> */}
+                    {/* <div className="testimonial-item bg-transparent border rounded p-4">
                         <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
                         <p style={{ height: '192px' }}>I ordered Makhni Karahi and Murgh Cholay, which were both delicious. Customer service is excellent. YOU MADE MY DAY😊😊😊!!! I urge that you all go out and order some delectable things.</p>
                         <div className="d-flex align-items-center">
@@ -84,9 +95,9 @@ export default function ReviewsComponent() {
                                 <small>Professional</small>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className="testimonial-item bg-transparent border rounded p-4">
+                    {/* <div className="testimonial-item bg-transparent border rounded p-4">
                         <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
                         <p style={{ height: '192px' }}>I am so satisfied with the food and customer service. Quality and quantity is so amazing and the taste is very delicious 😋❤️😍</p>
                         <div className="d-flex align-items-center">
@@ -96,9 +107,9 @@ export default function ReviewsComponent() {
                                 <small>Student</small>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className="testimonial-item bg-transparent border rounded p-4">
+                    {/* <div className="testimonial-item bg-transparent border rounded p-4">
                         <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
                         <p style={{ height: '192px' }}>Very delicious cuisines, I never found such hygiene, taste, and catering service from any homemade but this rocked. highly recommended to health-conscious people like me 😉. this is now my permanent cook.</p>
                         <div className="d-flex align-items-center">
@@ -108,9 +119,9 @@ export default function ReviewsComponent() {
                                 <small>Businessman</small>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className="testimonial-item bg-transparent border rounded p-4">
+                    {/* <div className="testimonial-item bg-transparent border rounded p-4">
                         <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
                         <p style={{ height: '192px' }}>Highly recommend, good presentation with taste</p>
                         <div className="d-flex align-items-center">
@@ -120,9 +131,9 @@ export default function ReviewsComponent() {
                                 <small>Student</small>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className="testimonial-item bg-transparent border rounded p-4" >
+                    {/* <div className="testimonial-item bg-transparent border rounded p-4" >
                         <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
                         <p style={{ height: '192px' }}>Very delicious taste highly recommend</p>
                         <div className="d-flex align-items-center">
@@ -132,7 +143,7 @@ export default function ReviewsComponent() {
                                 <small>House wife</small>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
 
                 </OwlCarousel>

@@ -13,6 +13,7 @@ import AdminBooking from './Components/AdminBooking';
 import EditBooking from './Components/EditBooking';
 import Testimonail from './Components/Testimonial';
 import AddTestimonials from './Components/AddTestimonials';
+import EditTestimonials from './Components/EditTestimonials';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path='/editbooking/:id' element={<EditBooking/>} />
           <Route path='/testimonials' element={<Testimonail />} />
           <Route path='/addtestimonial' element={<AddTestimonials />} />
+          <Route path='/edittestimonial/:id' element={<EditTestimonials />} />
 
         </Routes>
       </BrowserRouter>

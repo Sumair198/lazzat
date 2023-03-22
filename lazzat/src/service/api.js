@@ -1,16 +1,4 @@
-import axios from 'axios'
-
-// const getHomemenu = async() =>
-// {
-//     try{
-//         return await axios.get(`http://localhost:4000/`)
-        
-//     }
-//     catch(err)
-//     {
-//         console.log('Error while calling api all menu data!! ',err)
-//     }
-// }   
+import axios from 'axios' 
 
 const ourspeciality = async() =>
 {
@@ -103,4 +91,15 @@ const chineseME = async() =>
     }
 }
 
-export  {ourspeciality,maincourse,yummydesserts,chinese,ourspecialityMe,maincourseMe,yummydessertsMe,chineseME};
+const testimonialsData = async () =>
+{
+    try{
+        return await axios.get(`http://localhost:4000/gettestimonials`)
+    }
+    catch(err)
+    {
+        console.log('Error while calling api get  testimonials data!! ',err)
+    }
+}
+
+export  {ourspeciality,maincourse,yummydesserts,chinese,ourspecialityMe,maincourseMe,yummydessertsMe,chineseME,testimonialsData};

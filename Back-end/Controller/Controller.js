@@ -304,4 +304,18 @@ const deletebooking = async (req,res) =>
 } 
 
 
-export { createMenu, Menu, getHomeMenu, speciality, maincourse, yummydesserts, chinese, Booking, specialityMenu, maincourseMenu, yummydessertsMenu, chineseMenu, registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking,createTestimonials };
+//get testimonials
+const getTestimonials = async (req,res) =>
+{
+    const result = await TestimonialModel.find()
+    res.send(result)
+} 
+
+const deleteTestimonial = async (req,res) =>
+{
+    const result = await TestimonialModel.findByIdAndDelete(req.params.id)
+    console.log(result)
+    res.send(result)
+} 
+
+export { createMenu, Menu, getHomeMenu, speciality, maincourse, yummydesserts, chinese, Booking, specialityMenu, maincourseMenu, yummydessertsMenu, chineseMenu, registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking,createTestimonials,getTestimonials,deleteTestimonial };

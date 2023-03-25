@@ -16,6 +16,7 @@ import AddTestimonials from './Components/AddTestimonials';
 import EditTestimonials from './Components/EditTestimonials';
 import OurTeam from './Components/OurTeam';
 import AddOurTeam from './Components/AddOurTeam';
+import EditOurTeam from './Components/EditOurTeam';
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
           <Route path='/edittestimonial/:id' element={<EditTestimonials />} />
           <Route path='/ourteam' element={<OurTeam />} />
           <Route path='/addourteam' element={<AddOurTeam />} />
+          <Route path='/editteam/:id' element={<EditOurTeam />} />
+
 
         </Routes>
       </BrowserRouter>

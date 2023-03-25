@@ -1,6 +1,20 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import { ourTeamData } from '../service/api';
 export default function TeamComponent() {
+
+
+const [ourTeam , setOurTeam] = useState([])
+
+    useEffect(()=>
+    {
+        getOurTeam()
+    },[])
+    const getOurTeam =  async() =>
+    {
+        const response = await ourTeamData()
+        setOurTeam(response.data)
+
+    }
 
     return (
         <div className="container-xxl pt-5 pb-3">
@@ -10,21 +24,26 @@ export default function TeamComponent() {
                     <h1 className="mb-5">Our Master Chefs</h1>
                 </div>
                 <div className="row g-4">
-                    <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div className="team-item text-center rounded overflow-hidden">
-                            <div className="rounded-circle overflow-hidden m-4">
-                                <img className="img-fluid" src="img/chef1.jpeg" alt="" />
-                            </div>
-                            <h5 className="mb-0">Mrs. Reema Babar</h5>
-                            <small>Head Chef</small>
-                            <div className="d-flex justify-content-center mt-3">
-                                <a className="btn btn-square btn-primary mx-1" href="https://www.facebook.com/Lazzateziyafat/"><i className="fab fa-facebook-f"></i></a>
-                                <a className="btn btn-square btn-primary mx-1" href="https://www.instagram.com/lazzateziyafat/"><i className="fab fa-instagram"></i></a>
-                                <a className="btn btn-square btn-primary mx-1" href="https://wa.me/923143053649"><i className="fab fa-whatsapp"></i></a>
+                    {
+                        ourTeam.map(masterChefs=>(
+                            <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div className="team-item text-center rounded overflow-hidden">
+                                <div className="rounded-circle overflow-hidden m-4">
+                                    <img className="img-fluid" src={`uploads/OurTeam/${masterChefs.teamImage}`} alt="" />
+                                </div>
+                                <h5 className="mb-0">{masterChefs.teamName}</h5>
+                                <small>{masterChefs.teamTitle}</small>
+                                <div className="d-flex justify-content-center mt-3">
+                                    <a className="btn btn-square btn-primary mx-1" href={masterChefs.teamFacebook}><i className="fab fa-facebook-f"></i></a>
+                                    <a className="btn btn-square btn-primary mx-1" href={masterChefs.teamInsta}><i className="fab fa-instagram"></i></a>
+                                    <a className="btn btn-square btn-primary mx-1" href={masterChefs.teamWhatsapp}><i className="fab fa-whatsapp"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        ))
+                    }
+                   
+                    {/* <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div className="team-item text-center rounded overflow-hidden">
                             <div className="rounded-circle overflow-hidden m-4">
                                 <img className="img-fluid" src="img/head-chef.jpeg" alt="" />
@@ -37,8 +56,8 @@ export default function TeamComponent() {
                                 <a className="btn btn-square btn-primary mx-1" href="https://wa.me/923143053649"><i className="fab fa-whatsapp"></i></a>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    </div> */}
+                    {/* <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div className="team-item text-center rounded overflow-hidden">
                             <div className="rounded-circle overflow-hidden m-4">
                                 <img className="img-fluid" src="img/chef2.jpeg" alt="" />
@@ -51,8 +70,8 @@ export default function TeamComponent() {
                                 <a className="btn btn-square btn-primary mx-1" href="https://wa.me/923143053649"><i className="fab fa-whatsapp"></i></a>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    </div> */}
+                    {/* <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                         <div className="team-item text-center rounded overflow-hidden">
                             <div className="rounded-circle overflow-hidden m-4">
                                 <img className="img-fluid" src="img/chef3.jpeg" alt="" />
@@ -65,7 +84,7 @@ export default function TeamComponent() {
                                 <a className="btn btn-square btn-primary mx-1" href="https://wa.me/923143053649"><i className="fab fa-whatsapp"></i></a>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

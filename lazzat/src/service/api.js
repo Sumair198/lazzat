@@ -102,4 +102,15 @@ const testimonialsData = async () =>
     }
 }
 
-export  {ourspeciality,maincourse,yummydesserts,chinese,ourspecialityMe,maincourseMe,yummydessertsMe,chineseME,testimonialsData};
+//get out team
+const ourTeamData = async () =>
+{
+    try{
+        return await axios.get(`http://localhost:4000/getOurTeam`)
+    }
+    catch(err)
+    {
+        console.log('Error while calling api get Team data!! ',err)
+    }
+}
+export  {ourspeciality,maincourse,yummydesserts,chinese,ourspecialityMe,maincourseMe,yummydessertsMe,chineseME,testimonialsData,ourTeamData};

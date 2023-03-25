@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router()
 
-import {createMenu ,Menu, getHomeMenu,speciality,maincourse, yummydesserts,chinese,Booking,specialityMenu,maincourseMenu,yummydessertsMenu,chineseMenu,registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking,createTestimonials,getTestimonials,deleteTestimonial, createOurTeam} from "../Controller/Controller.js";
+import {createMenu ,Menu, getHomeMenu,speciality,maincourse, yummydesserts,chinese,Booking,specialityMenu,maincourseMenu,yummydessertsMenu,chineseMenu,registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking,createTestimonials,getTestimonials,deleteTestimonial, createOurTeam,getTeam,deleteTeam} from "../Controller/Controller.js";
 import multer from "multer";
 
 
@@ -109,6 +109,11 @@ router.get('/gettestimonials' , getTestimonials)
 
 //delete testimonial
 router.delete('/deltestimonial/:id', deleteTestimonial)
+
+//get our team
+router.get('/getOurTeam', getTeam)
+
+router.delete('/deleteteam/:id' , deleteTeam)
 
 
 

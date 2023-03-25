@@ -340,4 +340,22 @@ const deleteTestimonial = async (req,res) =>
     res.send(result)
 } 
 
-export { createMenu, Menu, getHomeMenu, speciality, maincourse, yummydesserts, chinese, Booking, specialityMenu, maincourseMenu, yummydessertsMenu, chineseMenu, registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking,createTestimonials,getTestimonials,deleteTestimonial,createOurTeam };
+
+//get our team
+const getTeam = async (req,res) =>
+{
+    const result = await OurTeamModel.find()
+    res.send(result)
+} 
+
+//delete team
+const deleteTeam = async (req,res) =>
+{
+    const result = await OurTeamModel.findByIdAndDelete(req.params.id)
+    console.log(result)
+    res.send(result)
+} 
+
+
+
+export { createMenu, Menu, getHomeMenu, speciality, maincourse, yummydesserts, chinese, Booking, specialityMenu, maincourseMenu, yummydessertsMenu, chineseMenu, registerUser,loginUser,deleteMenu,getSingleMenu,getBooking,deletebooking,createTestimonials,getTestimonials,deleteTestimonial,createOurTeam,getTeam,deleteTeam };
